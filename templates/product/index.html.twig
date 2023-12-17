@@ -1,18 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Nos Plat
+  Nos Plats
 {% endblock %}
 
 {% block body %}
   <div class="container pt-5 mt-5">
-    <h1>Nos plat ! ✅</h1>
+    <h1>Nos plats ! ✅</h1>
+    {# <div class="mb-4">
+        <form action="{{ path('app_product') }}" method="get">
+            <label for="category">Filtrer par catégorie :</label>
+            <select name="category" id="category">
+                <option value="">Toutes les catégories</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Filtrer</button>
+        </form>
+    </div> #}
     <div class="row">
-      {% for product in products %}
-        <div class="col-lg-3 mb-4">
-          {% include 'product/_product_card.html.twig' %}
-        </div>
-      {% endfor %}
+        {% for product in products %}
+            <div class="col-lg-3 mb-4">
+                {% include 'product/_product_card.html.twig' %}
+            </div>
+        {% endfor %}
     </div>
   </div>
 {% endblock %}
