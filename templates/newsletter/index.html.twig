@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello NewsletterController!
+{% endblock %}
+
+{% block body %}
+  <section class="subscribe-area pb-50 pt-70">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="subscribe-text mb-15">
+            <span>JOIN OUR NEWSLETTER</span>
+            <h2>subscribe newsletter</h2>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="subscribe-wrapper subscribe2-wrapper">
+            <div class="subscribe-form">
+              {% if form_errors(newsletter_form.email) %}
+                <div class="alert alert-danger pb-1">{{ form_errors(newsletter_form.email) }}</div>
+              {% endif %}
+
+              {{ form_start(newsletter_form) }}
+              {{ form_label(newsletter_form.email, ' ', { label_attr: { class: 'hidden mb-2' } }) }}
+              {{ form_widget(newsletter_form.email) }}
+
+              <button type="submit">S'inscrire <i class="fas fa-long-arrow-alt-right"></i></button>
+              {{ form_end(newsletter_form, { render_rest: false }) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

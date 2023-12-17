@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Category index
+{% endblock %}
+
+{% block body %}
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      {% include 'side-nav.html.twig' %}
+      <div class="col-lg-9">
+        <h1>Category index</h1>
+
+        <a href="{{ path('app_category_crud_new') }}">Create new</a>
+        {% for message in app.flashes('success') %}
+          <div class="alert alert-succes" role="alert">{{ message }}</div>
+        {% endfor %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for category in categories %}
+              <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                  <a href="{{ path('app_category_crud_show', { id: category.id }) }}" class="me-3"><i class="fa-solid fa-eye"></i></a>
+                  <a href="{{ path('app_category_crud_edit', { id: category.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                </td>
+              </tr>
+            {% else %}
+              <tr>
+                <td colspan="3">no records found</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

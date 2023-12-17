@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  A propos
+{% endblock %}
+{% block body %}
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col-lg-6">
+        <img src="/uploads/products/{{product.image}}" alt="" class="img-fluid" />
+      </div>
+      <div class="col-lg-6">
+        <h1>{{product.name}}</h1>
+        <h2>{{product.price}} €</h2>
+        <p class="badge text-bg-primary">{{ product.category.name }}</p>
+        <p>
+          {{product.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+<div class="container pt-5 mt-5">
+    <h1 class="mb-4">Produits Similaires : </h1>
+    <div class="row">
+      {% for similarProduct in similarProducts %}
+        <div class="col-lg-3 mb-4">
+        <img src="/uploads/products/{{ similarProduct.image }}" alt="" class="img-fluid">
+          <h3>{{ similarProduct.name }}</h3>
+            <p>{{ similarProduct.category.name }}</p>
+    <a href="{{ path('app_product_item', { id: similarProduct.id }) }}" class="btn btn-primary" data-mdb-ripple-init>En savoir plus</a>
+
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+<div class="card">
+  <img src="/uploads/products/{{ product.image }}" alt="Fissure in Sandstone"/>
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="badge">{{ product.category.name }}</p>
+    <p class="card-text">{{ product.description }}</p>
+    <a href="{{ path('app_product_item', { id: product.id }) }}" class="btn btn-primary" data-mdb-ripple-init>En savoir plus</a>
+  </div>
+</div>

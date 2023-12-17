@@ -1,0 +1,66 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
+  <div class="container">
+    <a class="navbar-brand" href="#!"><span style="color: #5e9693;">Poké</span><span style="color: #fff;">PARADISE</span></a>
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('about') }}">A propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_product') }}">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('newsletter') }}">Newsletter</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!">Contact</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav d-flex flex-row">
+        {% if not app.user %}
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="{{ path('app_register') }}">Inscription</i></a>
+          </li>
+        {% endif %}
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#!"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#!"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#!"><i class="fab fa-instagram"></i></a>
+        </li>
+        {% if app.user %}
+          <li class="nav-item me-3 me-lg-0">
+            <div class="dropdown">
+              <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
+              <img src="/uploads/profile_images/{{ app.user.image }}" class="rounded-circle" height="30" alt="" loading="lazy" />
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                <li>
+                  <a class="dropdown-item" href="#">Mon profil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">{{ app.user.userIdentifier }}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navbar -->

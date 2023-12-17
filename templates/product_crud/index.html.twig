@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Produits
+{% endblock %}
+
+{% block body %}
+  <div class="container pt-5 mt-5">
+    <div class="row">
+      {% include 'side-nav.html.twig' %}
+      <div class="col-lg-9 mt-5">
+        <h1>Produits</h1>
+
+        <a href="{{ path('app_product_crud_new') }}">Create new</a>
+        {% for message in app.flashes('success') %}
+          <div class="alert alert-succes" role="alert">{{ message }}</div>
+        {% endfor %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Nom</th>
+              <th>Catégorie</th>
+              <th>Description</th>
+              <th>Prix</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+              <tr>
+                <td>
+                  <img src="/uploads/products/{{ product.image }}" alt="" class="img-fluid" height="100" width="100" />
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}€</td>
+                <td>
+                  <a href="{{ path('app_product_crud_show', { id: product.id }) }}" class="me-3"><i class="fa-solid fa-eye"></i></a>
+                  <a href="{{ path('app_product_crud_edit', { id: product.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                </td>
+              </tr>
+            {% else %}
+              <tr>
+                <td colspan="6">no records found</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

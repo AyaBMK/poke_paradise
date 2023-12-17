@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block body %}
+<div class="container pt-5 mt-5">
+    <a href="{{ path('app_product_crud_index') }}"><i class="fa-solid fa-arrow-left"></i> Revenir à la liste</a>
+    <h1>Edit Product</h1>
+
+    {{ include('product_crud/_form.html.twig', {'button_label': 'Update'}) }}
+
+    
+
+    {{ include('product_crud/_delete_form.html.twig') }}
+</div>
+{% endblock %}

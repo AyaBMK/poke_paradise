@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block body %}
+    <div class="container pt-5 mt-5">
+        <a href="{{ path('app_category_crud_index') }}"><i class="fa-solid fa-arrow-left"></i> Revenir à la liste</a>
+    <h1>Ajouter une nouvelle catégorie    </h1>
+
+    {{ include('category_crud/_form.html.twig') }}
+    </div>
+    
+
+    
+{% endblock %}

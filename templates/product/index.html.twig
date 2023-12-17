@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Nos Plat
+{% endblock %}
+
+{% block body %}
+  <div class="container pt-5 mt-5">
+    <h1>Nos plat ! ✅</h1>
+    <div class="row">
+      {% for product in products %}
+        <div class="col-lg-3 mb-4">
+          {% include 'product/_product_card.html.twig' %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
